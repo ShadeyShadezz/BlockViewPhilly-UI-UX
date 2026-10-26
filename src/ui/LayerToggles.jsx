@@ -3,10 +3,10 @@ import { createPortal } from 'react-dom';
 import { useMapStore } from '../store/useMapStore';
 
 const LAYERS = [
-  { key: 'innovation', label: 'Innovation', color: '#00d1ff' },
-  { key: 'investment', label: 'Investment', color: '#FF8A00' },
-  { key: 'mobility', label: 'Mobility', color: '#2E7D32' },
-  { key: 'labels', label: 'Labels', color: '#90a4ae' },
+  { key: 'innovation', label: 'Innovation', color: 'var(--mock-orange)' },
+  { key: 'investment', label: 'Investment', color: 'var(--status-warning)' },
+  { key: 'mobility', label: 'Mobility', color: 'var(--status-success)' },
+  { key: 'labels', label: 'Labels', color: 'var(--mock-muted)' },
 ];
 
 const HAS_ION_TOKEN  = !!import.meta.env.VITE_CESIUM_ION_TOKEN;
@@ -77,7 +77,7 @@ export default function LayerToggles() {
             onChange={(e) => setLayerVisibility(key, e.target.checked)}
             aria-label={`Toggle ${label} layer`}
           />
-          <span style={{ color: visibility[key] ? color : '#546e7a' }}>{label}</span>
+          <span style={{ color: visibility[key] ? color : 'var(--mock-muted)' }}>{label}</span>
         </label>
       ))}
 
@@ -94,7 +94,7 @@ export default function LayerToggles() {
           onChange={(e) => setOSMBuildings(e.target.checked)}
           aria-label="Toggle OSM 3D buildings"
         />
-        <span style={{ color: osmOn && HAS_ION_TOKEN ? '#8bc34a' : '#546e7a' }}>
+        <span style={{ color: osmOn && HAS_ION_TOKEN ? 'var(--status-success)' : 'var(--mock-muted)' }}>
           OSM Buildings{!HAS_ION_TOKEN && <span className="phila-toggle-hint"> (needs Ion)</span>}
         </span>
       </label>
@@ -102,8 +102,8 @@ export default function LayerToggles() {
       {osmOn && HAS_ION_TOKEN && (
         <div className="phila-height-control phila-osm-height-control">
           <div className="phila-height-label">
-            <span style={{ color: '#8bc34a' }}>↕ OSM height</span>
-            <span className="phila-height-val" style={{ color: '#8bc34a' }}>{osmHeightScale.toFixed(1)}×</span>
+            <span style={{ color: 'var(--status-success)' }}>↕ OSM height</span>
+            <span className="phila-height-val" style={{ color: 'var(--status-success)' }}>{osmHeightScale.toFixed(1)}×</span>
           </div>
           <input
             type="range"
@@ -134,7 +134,7 @@ export default function LayerToggles() {
           onChange={(e) => setGoogleTiles(e.target.checked)}
           aria-label="Toggle Google Photorealistic 3D Tiles"
         />
-        <span style={{ color: googleOn && HAS_GOOGLE_KEY ? '#4db6ac' : '#546e7a' }}>
+        <span style={{ color: googleOn && HAS_GOOGLE_KEY ? 'var(--mock-orange)' : 'var(--mock-muted)' }}>
           Google 3D Tiles{!HAS_GOOGLE_KEY && <span className="phila-toggle-hint"> (needs key)</span>}
         </span>
       </label>
@@ -152,7 +152,7 @@ export default function LayerToggles() {
           onChange={(e) => setEnrichedBuildings(e.target.checked)}
           aria-label="Toggle enriched Philadelphia buildings"
         />
-        <span style={{ color: enrichedOn && HAS_ION_TOKEN ? '#00d1ff' : '#546e7a' }}>
+        <span style={{ color: enrichedOn && HAS_ION_TOKEN ? 'var(--mock-orange)' : 'var(--mock-muted)' }}>
           Enriched Buildings{!HAS_ION_TOKEN && <span className="phila-toggle-hint"> (needs Ion)</span>}
         </span>
       </label>
@@ -169,10 +169,10 @@ export default function LayerToggles() {
           onChange={(e) => { setEconomicColor(e.target.checked); if (e.target.checked) setHeightDebug(false); }}
           aria-label="Toggle economic color mode"
         />
-        <span style={{ color: economicColor && enrichedOn ? '#FF8A00' : '#546e7a', fontSize: '0.82em' }}>
+        <span style={{ color: economicColor && enrichedOn ? 'var(--status-warning)' : 'var(--mock-muted)', fontSize: '0.82em' }}>
           Economic Color
           {economicColor && enrichedOn && (
-            <span className="phila-toggle-hint" style={{ color: '#FF8A00', marginLeft: 4 }}>● live</span>
+            <span className="phila-toggle-hint" style={{ color: 'var(--status-warning)', marginLeft: 4 }}>● live</span>
           )}
         </span>
       </label>
@@ -189,10 +189,10 @@ export default function LayerToggles() {
           onChange={(e) => { setHeightDebug(e.target.checked); if (e.target.checked) setEconomicColor(false); }}
           aria-label="Toggle height test style"
         />
-        <span style={{ color: heightDebug && enrichedOn ? '#69f0ae' : '#546e7a', fontSize: '0.82em' }}>
+        <span style={{ color: heightDebug && enrichedOn ? 'var(--status-success)' : 'var(--mock-muted)', fontSize: '0.82em' }}>
           Height test
           {heightDebug && enrichedOn && (
-            <span className="phila-toggle-hint" style={{ color: '#69f0ae', marginLeft: 4 }}>● check console</span>
+            <span className="phila-toggle-hint" style={{ color: 'var(--status-success)', marginLeft: 4 }}>● check console</span>
           )}
         </span>
       </label>
@@ -242,9 +242,9 @@ export default function LayerToggles() {
           checked={connectMode}
           onChange={(e) => setConnectMode(e.target.checked)}
           aria-label="Toggle Connect mode"
-          style={{ accentColor: '#ffd700' }}
+          style={{ accentColor: 'var(--status-warning)' }}
         />
-        <span style={{ color: connectMode ? '#ffd700' : undefined }}>
+        <span style={{ color: connectMode ? 'var(--status-warning)' : undefined }}>
           Connect mode
           {connectMode && <span className="phila-toggle-hint"> active</span>}
         </span>

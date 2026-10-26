@@ -143,12 +143,17 @@ export default function PhiladelphiaLayers({ viewer }) {
       return { ...tract, rdSpendNearby, vcDealsNearby };
     });
     setPhilaTractsWithCBS(enriched);
+    const selected = useMapStore.getState().philaSelectedTract;
+    if (selected) {
+      const match = enriched.find(t => t.id === selected.id);
+      if (match) useMapStore.setState({philaSelectedTract:match, activeInsight:match});
+    }
     setPhilaBuildings(PHILADELPHIA_BUILDINGS);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Create all entities when viewer is ready
   useEffect(() => {
-    if (!viewer) return;
+    if (!viewer || viewer.isDestroyed()) return;
 
     const { philaLayerVisibility: vis } = useMapStore.getState();
     const refs = { innovation: [], investment: [], mobility: [], labels: [] };

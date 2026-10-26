@@ -105,7 +105,7 @@ export default function Legend() {
           <div className="phila-legend-billboard" style={{ borderColor: hoveredItem.color }}>
             <div className="phila-legend-billboard-dot" style={{ background: hoveredItem.color }} />
             <div>
-              <div className="phila-legend-billboard-title" style={{ color: hoveredItem.color }}>
+              <div className="phila-legend-billboard-title" style={{ color: 'var(--mock-text)' }}>
                 {hoveredItem.label}
               </div>
               <div className="phila-legend-billboard-body">{hoveredItem.info}</div>

@@ -1,0 +1,33 @@
+.overview { display:grid; grid-template-columns:minmax(0,1.08fr) minmax(0,1fr); gap:20px; }
+.introduction, .utilities { min-width:0; display:flex; flex-direction:column; gap:16px; }
+.titleBar, .mission, .livePanel, .shortcut { border:1px solid var(--line); background:var(--mock-panel); color:var(--mock-text); border-radius:8px; }
+.titleBar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:17px 22px; background:var(--mock-tag); }
+.titleBar h1 { margin:0; font-size:20px; line-height:1.2; font-weight:700; }
+.titleBar > span { color:var(--mock-muted); font-size:11px; }
+.mission { flex:1; padding:26px; display:flex; flex-direction:column; align-items:flex-start; }
+.label { font-size:10px; letter-spacing:.13em; line-height:1.5; font-weight:700; color:var(--mock-orange); }
+.mission h2 { margin:17px 0 16px; font-size:clamp(23px,2.1vw,30px); line-height:1.23; letter-spacing:-.025em; color:var(--mock-text); }
+.mission p { max-width:42ch; margin:0 0 24px; font-size:14px; line-height:1.75; color:var(--mock-muted); }
+.missionLink { display:flex; align-items:center; gap:14px; margin-top:auto; color:var(--mock-orange); font-size:12px; font-weight:650; text-decoration:none; }
+.missionLink:hover { text-decoration:underline; }
+.livePanel { padding:22px; }
+.liveHeading { display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; }
+.timeZone { color:var(--mock-muted); font-size:10px; }
+.clock { display:grid; gap:12px; margin:18px 0; }
+.clock dt, .weather dt { color:var(--mock-muted); font-size:10px; text-transform:uppercase; letter-spacing:.07em; margin-bottom:5px; }
+.clock dd, .weather dd { margin:0; color:var(--mock-text); }
+.clock .time { font-size:32px; line-height:1.1; font-weight:750; letter-spacing:-.035em; }
+.clock .date { font-size:13px; line-height:1.5; }
+.weather { margin:0; display:grid; grid-template-columns:.85fr 1.3fr .85fr; gap:12px; border-top:1px solid var(--line); padding-top:15px; }
+.weather > div { min-width:0; }
+.weather dd { font-size:13px; font-weight:650; line-height:1.5; overflow-wrap:anywhere; }
+.shortcuts { display:grid; gap:12px; }
+.shortcut { min-height:73px; padding:15px 22px; display:flex; align-items:center; justify-content:space-between; gap:14px; text-decoration:none; transition:background .15s,border-color .15s; }
+.shortcut > span:first-child { display:grid; gap:5px; min-width:0; }
+.shortcut strong { font-size:15px; color:var(--mock-text); }
+.shortcut > span:first-child > span { color:var(--mock-muted); font-size:11px; line-height:1.5; }
+.shortcut > span:last-child { color:var(--mock-orange); font-size:23px; }
+.shortcut:hover { background:var(--mock-tag); border-color:var(--mock-orange); }
+.shortcut:focus-visible, .missionLink:focus-visible { outline:3px solid var(--mock-orange); outline-offset:4px; }
+@media(max-width:899px) { .overview { grid-template-columns:minmax(0,1fr); } .mission { padding:24px; } .mission p { max-width:60ch; } }
+@media(max-width:420px) { .titleBar, .livePanel, .mission { padding:20px; } .titleBar { gap:6px; } .weather { gap:10px; grid-template-columns:.8fr 1.2fr .8fr; } .weather dd { font-size:12px; } .shortcut { padding:16px 20px; } }

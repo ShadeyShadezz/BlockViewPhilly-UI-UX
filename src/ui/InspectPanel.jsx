@@ -18,9 +18,9 @@ function fmtPct(r) {
 }
 
 const BADGE_STYLE = {
-  alert:    { background: '#FF8A00', color: '#000' },
-  positive: { background: '#2E7D32', color: '#fff' },
-  neutral:  { background: '#546E7A', color: '#fff' },
+  alert:    { background: 'var(--warning-fill)', color: 'var(--on-status)' },
+  positive: { background: 'var(--success-fill)', color: 'var(--on-status)' },
+  neutral:  { background: 'var(--neutral-fill)', color: 'var(--on-status)' },
 };
 
 function InsightBlock({ insight }) {
@@ -48,7 +48,7 @@ function InsightBlock({ insight }) {
       <p style={{ margin: '0 0 6px', fontSize: 12, lineHeight: 1.5, opacity: 0.9 }}>
         {insight.resident}
       </p>
-      <p style={{ margin: '0 0 4px', fontSize: 11, lineHeight: 1.4, opacity: 0.65, fontStyle: 'italic' }}>
+      <p style={{ margin: '0 0 4px', fontSize: 11, lineHeight: 1.4, color: 'var(--mock-muted)', fontStyle: 'italic' }}>
         {insight.builder}
       </p>
     </div>
@@ -78,7 +78,7 @@ function VBar({ icon, label, value }) {
 
 function CBSGauge({ cbs }) {
   const pct = Math.min(Math.max(cbs / 10, 0), 1) * 100;
-  const color = cbs >= 7 ? '#4caf50' : cbs >= 4 ? '#ffa726' : '#ef5350';
+  const color = cbs >= 7 ? 'var(--status-success)' : cbs >= 4 ? 'var(--status-warning)' : 'var(--status-danger)';
   return (
     <div className="phila-cbs-block">
       <div className="phila-cbs-label">Community Benefit Score</div>
@@ -250,7 +250,7 @@ function DockedInsight({ tract, onUnpin, onExpand }) {
   const narration        = useMapStore((s) => s.narration);
   const narrationLoading = useMapStore((s) => s.narrationLoading);
   const narrationError   = useMapStore((s) => s.narrationError);
-  const cbsColor = tract.cbs >= 7 ? '#4caf50' : tract.cbs >= 4 ? '#ffa726' : '#ef5350';
+  const cbsColor = tract.cbs >= 7 ? 'var(--status-success)' : tract.cbs >= 4 ? 'var(--status-warning)' : 'var(--status-danger)';
   const badgeStyle = BADGE_STYLE[insight.badge.tone] ?? BADGE_STYLE.neutral;
 
   // Show narration only if it belongs to this tract
@@ -261,7 +261,7 @@ function DockedInsight({ tract, onUnpin, onExpand }) {
       <div className="phila-docked-row">
         <button className="phila-docked-body" onClick={onExpand} aria-label={`Re-open ${tract.neighborhood}`}>
           <span className="phila-docked-cbs" style={{ color: cbsColor }}>
-            {tract.cbs}<span style={{ fontSize: '0.6em', opacity: 0.6 }}>/10</span>
+            {tract.cbs}<span style={{ fontSize: '0.6em', color: 'var(--mock-muted)' }}>/10</span>
           </span>
           <span className="phila-docked-info">
             <span className="phila-docked-name">{tract.neighborhood}</span>

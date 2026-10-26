@@ -17,7 +17,7 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.caught) {
       return (
-        <div className="phila-panel" style={{ padding: '12px 14px', color: '#ef5350', fontSize: 12 }}>
+        <div className="phila-panel" style={{ padding: '12px 14px', color: 'var(--status-danger)', fontSize: 12 }}>
           {this.props.fallback ?? 'This panel hit an error.'}
         </div>
       );

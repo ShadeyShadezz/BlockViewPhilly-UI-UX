@@ -8,17 +8,7 @@ const GOOGLE_API_KEY   = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
 const HAS_GOOGLE_KEY   = !!GOOGLE_API_KEY;
 
 // ── TEMP tile debugging — remove once the 503 is confirmed fixed ─────────────
-const maskKey = (k) => (k ? `${k.slice(0, 6)}…${k.slice(-4)} (${k.length} chars)` : 'MISSING');
-function logTilesetFailures(tileset, label) {
-  tileset.tileFailed.addEventListener((e) =>
-    console.error(`[TileDebug] ${label} tile failed:`, e.url, '→', e.message));
-}
-console.info('[TileDebug] env at runtime:', {
-  VITE_GOOGLE_MAPS_API_KEY: maskKey(import.meta.env.VITE_GOOGLE_MAPS_API_KEY),
-  VITE_CESIUM_ION_TOKEN: import.meta.env.VITE_CESIUM_ION_TOKEN ? 'set' : 'MISSING',
-  VITE_ENABLE_NARRATION: import.meta.env.VITE_ENABLE_NARRATION ?? 'unset (narration off)',
-  CESIUM_BASE_URL: window.CESIUM_BASE_URL ?? '(derived from /cesium/Cesium.js script src)',
-});
+function logTilesetFailures(tileset, label) { tileset.tileFailed.addEventListener(() => console.warn(`${label} tile unavailable`)); }
 
 // ── Enriched buildings style builders ────────────────────────────────────────
 //
@@ -180,6 +170,23 @@ export default function PhilaCesiumMap() {
   const philaHeightDebug        = useMapStore((s) => s.philaHeightDebug);
   const philaFilterColor        = useMapStore((s) => s.philaFilterColor);
   const activeInsight           = useMapStore((s) => s.activeInsight);
+
+  const selectedGeography = useMapStore(s => s.philaSelectedGeography);
+  const selectedBuilding = useMapStore(s => s.philaSelectedBuilding);
+  const selectedTract = useMapStore(s => s.philaSelectedTract);
+  const cameraPlace = selectedGeography ?? selectedBuilding ?? selectedTract;
+  const selectedLon = cameraPlace?.centroid?.[0] ?? cameraPlace?.lon;
+  const selectedLat = cameraPlace?.centroid?.[1] ?? cameraPlace?.lat;
+
+  useEffect(() => {
+    const viewer = viewerRef.current;
+    if (!ready || !viewer || viewer.isDestroyed() || !Number.isFinite(selectedLon) || !Number.isFinite(selectedLat)) return;
+    viewer.camera.flyTo({
+      destination: Cesium.Cartesian3.fromDegrees(selectedLon, selectedLat, 1800),
+      orientation: {heading:0, pitch:Cesium.Math.toRadians(-55), roll:0},
+      duration:0.8,
+    });
+  }, [ready, selectedLon, selectedLat]);
 
   // ── Viewer initialisation ────────────────────────────────────────────────
   useEffect(() => {

@@ -20,7 +20,7 @@ function fmt$(n) {
 
 function MobilityRating({ score }) {
   const label = score >= 60 ? 'High' : score >= 40 ? 'Moderate' : 'Low';
-  const color = score >= 60 ? '#4caf50' : score >= 40 ? '#ffa726' : '#ef5350';
+  const color = score >= 60 ? 'var(--status-success)' : score >= 40 ? 'var(--status-warning)' : 'var(--status-danger)';
   return <span style={{ color, fontWeight: 700 }}>{score} — {label}</span>;
 }
 

@@ -1,4 +1,5 @@
 // no react hooks needed at this level — state lives in child components
+import { useNavigate } from 'react-router-dom';
 import { useMapStore } from './store/useMapStore';
 import { useNarration } from './hooks/useNarration';
 import PhilaCesiumMap from './PhilaCesiumMap';
@@ -22,6 +23,7 @@ import './ui/phila.css';
  */
 export default function PhiladelphiaApp() {
   const viewer = useMapStore((s) => s.viewer);
+  const navigate = useNavigate();
 
   // Start AI narration pipeline — fires on every activeInsight change
   useNarration();
@@ -32,14 +34,14 @@ export default function PhiladelphiaApp() {
       <PhilaCesiumMap />
 
       {/* Philadelphia layer entities (buildings + tracts) */}
-      {viewer && <PhiladelphiaLayers viewer={viewer} />}
+      {viewer && !viewer.isDestroyed() && <PhiladelphiaLayers viewer={viewer} />}
 
       {/* Top header bar */}
       <header className="phila-app-header" role="banner">
-        <span className="phila-app-wordmark">technical.me</span>
-        <span className="phila-app-divider">|</span>
-        <span className="phila-app-title">Philadelphia Pilot</span>
-        <span className="phila-sample-badge phila-sample-badge--header">Sample Data</span>
+        <span className="phila-app-wordmark">BlockView Philly</span>
+        <button type="button" className="phila-app-back-button" onClick={() => navigate('/')}>
+          Back to dashboard
+        </button>
       </header>
 
       {/* Left rail: layer controls + tract keyboard selector */}

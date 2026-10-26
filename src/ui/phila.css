@@ -9,19 +9,22 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #0f172a;
+  background: var(--mock-bg);
 }
 
 /* Top header */
 .phila-app-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 44px;
-  background: rgba(8, 10, 24, 0.9);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: var(--mock-panel);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: flex-start;
+  gap: 12px;
   padding: 0 16px;
   z-index: 300;
   backdrop-filter: blur(12px);
@@ -31,20 +34,35 @@
 .phila-app-wordmark {
   font-size: 15px;
   font-weight: 800;
-  color: #00d1ff;
+  color: var(--mock-orange);
   letter-spacing: -0.02em;
   font-family: system-ui, sans-serif;
 }
 
-.phila-app-divider {
-  color: rgba(255,255,255,0.2);
-  font-size: 14px;
+.phila-app-back-button {
+  position: fixed;
+  top: 8px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 12px;
+  background: var(--mock-panel);
+  color: var(--mock-text);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 310;
 }
 
-.phila-app-title {
-  font-size: 13px;
-  color: #94a3b8;
-  font-family: system-ui, sans-serif;
+.phila-app-back-button:hover {
+  background: var(--mock-panel);
+  border-color: rgba(148, 163, 184, 0.35);
 }
 
 /* Sample data badge (header variant) */
@@ -57,8 +75,8 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  background: rgba(250,200,0,0.15);
-  color: #fac800;
+  background: var(--warning-surface);
+  color: var(--status-warning);
   border: 1px solid rgba(250,200,0,0.3);
 }
 
@@ -70,7 +88,7 @@
 .phila-sample-tag {
   font-size: 9px;
   font-weight: 500;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-left: 4px;
@@ -108,10 +126,10 @@
 
 /* ── Base panel ─────────────────────────────────────────────────── */
 .phila-panel {
-  background: rgba(8, 12, 28, 0.88);
+  background: var(--mock-panel);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 10px;
-  color: #e2e8f0;
+  color: var(--mock-text);
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 13px;
   pointer-events: all;
@@ -131,7 +149,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--mock-muted);
 }
 
 .phila-toggle-row {
@@ -146,7 +164,7 @@
   min-height: 32px;
 }
 
-.phila-toggle-row:hover { background: rgba(255,255,255,0.05); }
+.phila-toggle-row:hover { background: var(--mock-tag); }
 
 .phila-toggle-row:focus-within {
   outline: 2px solid #ffd700;
@@ -163,7 +181,7 @@
 
 .phila-toggle-row span {
   font-size: 12px;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   flex: 1;
 }
 
@@ -191,7 +209,7 @@
 
 .phila-toggle-hint {
   font-size: 9px;
-  color: #475569;
+  color: var(--mock-muted);
   margin-left: 2px;
 }
 
@@ -205,14 +223,14 @@
   justify-content: space-between;
   align-items: center;
   font-size: 12px;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   margin-bottom: 6px;
 }
 
 .phila-height-val {
   font-size: 11px;
   font-weight: 700;
-  color: #00d1ff;
+  color: var(--mock-orange);
   min-width: 28px;
   text-align: right;
 }
@@ -228,7 +246,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 9px;
-  color: #475569;
+  color: var(--mock-muted);
   margin-top: 3px;
 }
 
@@ -258,7 +276,7 @@
 .phila-region-city {
   font-size: 13px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--mock-text);
 }
 
 .phila-region-grid {
@@ -277,13 +295,13 @@
 .phila-region-val {
   font-size: 16px;
   font-weight: 800;
-  color: #00d1ff;
+  color: var(--mock-orange);
   line-height: 1.2;
 }
 
 .phila-region-lbl {
   font-size: 10px;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -297,14 +315,14 @@
 }
 
 .phila-region-signal.is-alert {
-  background: rgba(255,160,0,0.12);
-  color: #ffa726;
+  background: var(--warning-surface);
+  color: var(--status-warning);
   border: 1px solid rgba(255,160,0,0.25);
 }
 
 .phila-region-signal.is-ok {
-  background: rgba(76,175,80,0.12);
-  color: #66bb6a;
+  background: var(--success-surface);
+  color: var(--status-success);
   border: 1px solid rgba(76,175,80,0.25);
 }
 
@@ -319,7 +337,7 @@
 }
 
 .phila-inspect-panel::-webkit-scrollbar { width: 4px; }
-.phila-inspect-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+.phila-inspect-panel::-webkit-scrollbar-thumb { background: var(--mock-tag); border-radius: 2px; }
 
 .phila-inspect-header { margin-bottom: 12px; }
 
@@ -327,20 +345,20 @@
   margin: 0 0 2px;
   font-size: 15px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--mock-text);
   line-height: 1.3;
 }
 
 .phila-subhead {
   font-size: 10px;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
 
 /* CBS score block */
 .phila-cbs-block {
-  background: rgba(0,209,255,0.06);
+  background: var(--mock-tag);
   border: 1px solid rgba(0,209,255,0.15);
   border-radius: 8px;
   padding: 12px;
@@ -349,7 +367,7 @@
 
 .phila-cbs-label {
   font-size: 10px;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
@@ -365,7 +383,7 @@
 .phila-cbs-denom {
   font-size: 16px;
   font-weight: 400;
-  color: #475569;
+  color: var(--mock-muted);
 }
 
 /* Gradient gauge bar */
@@ -393,7 +411,7 @@
   display: flex;
   justify-content: space-between;
   font-size: 9px;
-  color: #475569;
+  color: var(--mock-muted);
   margin-bottom: 0;
 }
 
@@ -402,20 +420,20 @@
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  background: rgba(255,160,0,0.1);
+  background: var(--warning-surface);
   border: 1px solid rgba(255,160,0,0.28);
   border-radius: 6px;
   padding: 7px 10px;
   margin-top: 8px;
   font-size: 11px;
-  color: #ffa726;
+  color: var(--status-warning);
   line-height: 1.4;
 }
 
 /* Summary text */
 .phila-summary {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   line-height: 1.6;
   margin-bottom: 12px;
   padding-bottom: 10px;
@@ -428,7 +446,7 @@
 .phila-stat-section-title {
   font-size: 10px;
   font-weight: 700;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 6px;
@@ -447,8 +465,8 @@
 }
 
 .phila-stat-row:last-child { border-bottom: none; }
-.phila-stat-label { color: #94a3b8; }
-.phila-stat-value { color: #e2e8f0; font-weight: 600; }
+.phila-stat-label { color: var(--mock-muted); }
+.phila-stat-value { color: var(--mock-text); font-weight: 600; }
 
 /* Vitality bars */
 .phila-vitality-section {
@@ -465,12 +483,12 @@
 }
 
 .phila-vitality-icon { font-size: 12px; width: 16px; flex-shrink: 0; }
-.phila-vitality-name { font-size: 11px; color: #94a3b8; width: 115px; flex-shrink: 0; }
+.phila-vitality-name { font-size: 11px; color: var(--mock-muted); width: 115px; flex-shrink: 0; }
 
 .phila-vitality-track {
   flex: 1;
   height: 4px;
-  background: rgba(255,255,255,0.08);
+  background: var(--mock-tag);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -484,7 +502,7 @@
 
 .phila-vitality-num {
   font-size: 10px;
-  color: #475569;
+  color: var(--mock-muted);
   width: 24px;
   text-align: right;
   flex-shrink: 0;
@@ -494,7 +512,7 @@
 .phila-sample-notice {
   margin-top: 10px;
   font-size: 10px;
-  color: #475569;
+  color: var(--mock-muted);
   text-align: center;
   padding-top: 8px;
   border-top: 1px solid rgba(255,255,255,0.05);
@@ -527,20 +545,20 @@
 }
 
 .phila-btn-primary {
-  background: rgba(0,209,255,0.15);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
   border: 1px solid rgba(0,209,255,0.35);
 }
 
 .phila-btn-secondary {
-  background: rgba(255,255,255,0.06);
-  color: #94a3b8;
+  background: var(--mock-tag);
+  color: var(--mock-muted);
   border: 1px solid rgba(255,255,255,0.1);
 }
 
 .phila-btn-danger {
-  background: rgba(239,83,80,0.12);
-  color: #ef9a9a;
+  background: var(--danger-surface);
+  color: var(--status-danger);
   border: 1px solid rgba(239,83,80,0.25);
 }
 
@@ -554,7 +572,7 @@
   margin: 0 0 10px;
   font-size: 12px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--mock-text);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -573,14 +591,14 @@
 
 .phila-gap-item:hover,
 .phila-gap-item:focus {
-  background: rgba(0,209,255,0.08);
+  background: var(--mock-tag);
   outline: 1px solid rgba(0,209,255,0.2);
 }
 
 .phila-gap-rank {
   font-size: 11px;
   font-weight: 700;
-  color: #ef5350;
+  color: var(--status-danger);
   width: 16px;
   flex-shrink: 0;
 }
@@ -588,14 +606,14 @@
 .phila-gap-name {
   flex: 1;
   font-size: 12px;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   line-height: 1.3;
 }
 
 .phila-gap-cbs {
   font-size: 11px;
   font-weight: 700;
-  color: #ef5350;
+  color: var(--status-danger);
   white-space: nowrap;
 }
 
@@ -610,7 +628,7 @@
 }
 
 .phila-tract-panel::-webkit-scrollbar { width: 3px; }
-.phila-tract-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); }
+.phila-tract-panel::-webkit-scrollbar-thumb { background: var(--mock-tag); }
 
 .phila-tract-toggle {
   width: 100%;
@@ -622,7 +640,7 @@
   margin-bottom: 6px;
   font-size: 10px;
   font-weight: 700;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
@@ -643,12 +661,12 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   transition: background 0.1s;
   min-height: 28px;
 }
 
-.phila-tract-item:hover { background: rgba(255,255,255,0.05); color: #e2e8f0; }
+.phila-tract-item:hover { background: var(--mock-tag); color: var(--mock-text); }
 
 .phila-tract-item:focus {
   outline: 2px solid #ffd700;
@@ -657,13 +675,13 @@
 }
 
 .phila-tract-item.is-selected {
-  background: rgba(0,209,255,0.12);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
 }
 
 .phila-tract-cbs {
   font-size: 10px;
-  color: #475569;
+  color: var(--mock-muted);
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -685,7 +703,7 @@
   width: 560px;
   max-width: 100%;
   padding: 20px;
-  background: rgba(8, 12, 28, 0.97);
+  background: var(--mock-panel);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 12px;
 }
@@ -701,7 +719,7 @@
   margin: 0;
   font-size: 14px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--mock-text);
 }
 
 .phila-compare-cols {
@@ -711,7 +729,7 @@
 }
 
 .phila-compare-divider {
-  background: rgba(255,255,255,0.08);
+  background: var(--mock-tag);
   align-self: stretch;
 }
 
@@ -719,7 +737,7 @@
   margin: 0 0 10px;
   font-size: 13px;
   font-weight: 700;
-  color: #00d1ff;
+  color: var(--mock-orange);
 }
 
 /* ── Legend stack (legend row + solutions footer) ───────────────── */
@@ -782,7 +800,7 @@
   align-items: center;
   gap: 4px;
   font-size: 10px;
-  color: #94a3b8;
+  color: var(--mock-muted);
 }
 
 .phila-legend-dot-circle {
@@ -795,7 +813,7 @@
 .phila-legend-sep {
   width: 1px;
   height: 16px;
-  background: rgba(255,255,255,0.1);
+  background: var(--mock-tag);
 }
 
 .phila-legend-gradient {
@@ -815,14 +833,14 @@
   align-items: center;
   gap: 6px;
   font-size: 10px;
-  color: #94a3b8;
+  color: var(--mock-muted);
 }
 
 .phila-legend-ticks {
   display: flex;
   justify-content: space-between;
   font-size: 9px;
-  color: #475569;
+  color: var(--mock-muted);
 }
 
 /* ── Panel expand / fullscreen ──────────────────────────────────── */
@@ -853,10 +871,10 @@
 /* Maximize / minimize icon button */
 .phila-icon-btn {
   flex: none;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--mock-tag);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 5px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   font-size: 15px;
   line-height: 1;
   padding: 3px 6px;
@@ -868,8 +886,8 @@
 }
 
 .phila-icon-btn:hover {
-  background: rgba(0, 209, 255, 0.12);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
   border-color: rgba(0, 209, 255, 0.3);
 }
 
@@ -888,7 +906,7 @@
   z-index: 200;
   overflow-y: auto;
   padding: 24px clamp(16px, 5vw, 80px);
-  background: rgba(8, 12, 28, 0.90) !important;
+  background: var(--mock-panel) !important;
   backdrop-filter: blur(16px) !important;
   -webkit-backdrop-filter: blur(16px) !important;
   /* Smooth expand transition */
@@ -1021,12 +1039,12 @@
 }
 
 .phila-solution-header:hover .phila-stat-section-title {
-  color: #cbd5e1;
+  color: var(--mock-muted);
 }
 
 .phila-solution-chevron {
   font-size: 13px;
-  color: #475569;
+  color: var(--mock-muted);
 }
 
 .phila-ai-badge {
@@ -1038,15 +1056,15 @@
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  background: rgba(0, 209, 255, 0.1);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
   border: 1px solid rgba(0, 209, 255, 0.25);
   vertical-align: middle;
 }
 
 .phila-solution-loading {
   font-size: 11px;
-  color: #475569;
+  color: var(--mock-muted);
   padding: 8px 0;
   font-style: italic;
 }
@@ -1059,7 +1077,7 @@
 }
 
 .phila-solution-card {
-  background: rgba(0, 209, 255, 0.04);
+  background: var(--mock-tag);
   border: 1px solid rgba(0, 209, 255, 0.12);
   border-radius: 8px;
   padding: 10px 12px;
@@ -1067,7 +1085,7 @@
 }
 
 .phila-solution-card:hover {
-  background: rgba(0, 209, 255, 0.07);
+  background: var(--mock-tag);
   border-color: rgba(0, 209, 255, 0.22);
 }
 
@@ -1083,8 +1101,8 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: rgba(0, 209, 255, 0.15);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
   font-size: 10px;
   font-weight: 800;
   display: flex;
@@ -1095,14 +1113,14 @@
 .phila-solution-title {
   font-size: 12px;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--mock-text);
   line-height: 1.3;
 }
 
 .phila-solution-desc {
   margin: 0 0 6px;
   font-size: 11px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   line-height: 1.5;
 }
 
@@ -1112,7 +1130,7 @@
   gap: 5px;
   margin-bottom: 6px;
   padding: 5px 7px;
-  background: rgba(255, 138, 0, 0.06);
+  background: var(--warning-surface);
   border-left: 2px solid rgba(255, 138, 0, 0.4);
   border-radius: 0 5px 5px 0;
 }
@@ -1125,7 +1143,7 @@
 
 .phila-solution-connect-text {
   font-size: 10px;
-  color: #ffa726;
+  color: var(--status-warning);
   line-height: 1.4;
   font-style: italic;
 }
@@ -1142,12 +1160,12 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #475569;
+  color: var(--mock-muted);
 }
 
 .phila-solution-asset-name {
   font-size: 10px;
-  color: #7dd3fc;
+  color: var(--mock-orange);
   font-weight: 600;
 }
 
@@ -1170,7 +1188,7 @@
 .phila-ai-disclosure {
   margin: 4px 0 0;
   font-size: 9px;
-  color: #475569;
+  color: var(--mock-muted);
   font-style: italic;
   line-height: 1.4;
 }
@@ -1179,7 +1197,7 @@
 .phila-solution-footer {
   margin-top: 0;
   padding: 9px 12px;
-  background: rgba(6, 10, 24, 0.96);
+  background: var(--mock-panel);
   border: 1px solid rgba(0, 209, 255, 0.35);
   border-radius: 8px;
   backdrop-filter: blur(12px);
@@ -1198,17 +1216,17 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #94a3b8;
+  color: var(--mock-muted);
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
 .phila-solution-footer-tour {
-  background: rgba(0, 209, 255, 0.18);
+  background: var(--mock-tag);
   border: 1px solid rgba(0, 209, 255, 0.5);
   border-radius: 4px;
-  color: #00d1ff;
+  color: var(--mock-orange);
   font-size: 9px;
   font-weight: 700;
   padding: 3px 9px;
@@ -1217,7 +1235,7 @@
 }
 
 .phila-solution-footer-tour:hover {
-  background: rgba(0, 209, 255, 0.32);
+  background: var(--mock-tag);
 }
 
 .phila-solution-footer-tour:disabled {
@@ -1227,7 +1245,7 @@
 
 .phila-solution-footer-loading {
   font-size: 11px;
-  color: #64748b;
+  color: var(--mock-muted);
   text-align: center;
   padding: 4px 0;
   letter-spacing: 0.1em;
@@ -1246,7 +1264,7 @@
   align-items: flex-start;
   gap: 4px;
   padding: 8px 9px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--mock-tag);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 6px;
   cursor: pointer;
@@ -1256,12 +1274,12 @@
 }
 
 .phila-solution-tile:hover {
-  background: rgba(0, 209, 255, 0.12);
+  background: var(--mock-tag);
   border-color: rgba(0, 209, 255, 0.4);
 }
 
 .phila-solution-tile.is-active {
-  background: rgba(0, 209, 255, 0.18);
+  background: var(--mock-tag);
   border-color: rgba(0, 209, 255, 0.6);
 }
 
@@ -1269,8 +1287,8 @@
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: rgba(0, 209, 255, 0.25);
-  color: #00d1ff;
+  background: var(--mock-tag);
+  color: var(--mock-orange);
   font-size: 8px;
   font-weight: 800;
   display: flex;
@@ -1282,7 +1300,7 @@
 .phila-solution-tile-label {
   font-size: 10px;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--mock-text);
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1299,7 +1317,7 @@
   z-index: 500;
   max-width: 480px;
   width: calc(100vw - 32px);
-  background: rgba(8, 12, 28, 0.92);
+  background: var(--mock-panel);
   border: 1px solid rgba(0, 209, 255, 0.3);
   border-radius: 10px;
   padding: 14px 18px;
@@ -1319,20 +1337,20 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #00d1ff;
+  color: var(--mock-orange);
   margin-bottom: 4px;
 }
 
 .phila-tour-title {
   font-size: 15px;
   font-weight: 700;
-  color: #f1f5f9;
+  color: var(--mock-text);
   margin-bottom: 5px;
 }
 
 .phila-tour-why {
   font-size: 12px;
-  color: #ffa726;
+  color: var(--status-warning);
   font-style: italic;
   line-height: 1.5;
 }
@@ -1341,7 +1359,7 @@
 .phila-data-stamp {
   font-size: 10px;
   font-weight: 500;
-  color: #64748b;
+  color: var(--mock-muted);
   letter-spacing: 0.02em;
   padding: 2px 0;
   display: flex;
@@ -1353,12 +1371,12 @@
 }
 
 .phila-data-stamp:hover {
-  color: #94a3b8;
+  color: var(--mock-muted);
 }
 
 .phila-data-stamp.is-synthetic {
-  color: #92400e;
-  background: rgba(245, 158, 11, 0.10);
+  color: var(--status-warning);
+  background: var(--warning-surface);
   border: 1px solid rgba(245, 158, 11, 0.22);
   border-radius: 4px;
   padding: 2px 7px;
@@ -1366,8 +1384,8 @@
 }
 
 .phila-data-stamp.is-synthetic:hover {
-  background: rgba(245, 158, 11, 0.16);
-  color: #b45309;
+  background: var(--warning-surface);
+  color: var(--status-warning);
 }
 
 /* Docked inspect panel (pinned insight, collapsed) ───────────────── */
@@ -1395,7 +1413,7 @@
 }
 
 .phila-docked-body:hover .phila-docked-name {
-  color: #e2e8f0;
+  color: var(--mock-text);
 }
 
 .phila-docked-cbs {
@@ -1415,7 +1433,7 @@
 .phila-docked-name {
   font-size: 12px;
   font-weight: 600;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1436,7 +1454,7 @@
 .phila-narration {
   font-size: 11.5px;
   line-height: 1.55;
-  color: #94a3b8;
+  color: var(--mock-muted);
   margin: 6px 0 0;
   padding-top: 6px;
   border-top: 1px solid rgba(255,255,255,0.07);
@@ -1444,17 +1462,17 @@
 }
 
 .phila-narration--loading {
-  color: #64748b;
+  color: var(--mock-muted);
   font-style: italic;
 }
 
 .phila-narration--fallback {
-  color: #64748b;
+  color: var(--mock-muted);
 }
 
 /* Full panel AI analysis block (replaces InsightBlock when narration is available) */
 .phila-narration-block {
-  background: rgba(99, 102, 241, 0.08);
+  background: var(--mock-tag);
   border: 1px solid rgba(99, 102, 241, 0.20);
   border-radius: 8px;
   padding: 10px 12px;
@@ -1466,7 +1484,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #64748b;
+  color: var(--mock-muted);
   font-size: 12px;
   font-style: italic;
   background: transparent;
@@ -1478,14 +1496,14 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #818cf8;
+  color: var(--status-purple);
   margin-bottom: 6px;
 }
 
 .phila-narration-text {
   font-size: 12.5px;
   line-height: 1.6;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   margin: 0;
 }
 
@@ -1531,7 +1549,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #64748b;
+  color: var(--mock-muted);
 }
 
 /* Interactive legend items */
@@ -1545,7 +1563,7 @@
 }
 
 .phila-legend-dot--btn:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--mock-tag);
 }
 
 .phila-legend-dot--btn:focus-visible {
@@ -1553,7 +1571,7 @@
 }
 
 .phila-legend-dot--btn.is-active {
-  background: rgba(255, 255, 255, 0.10);
+  background: var(--mock-tag);
 }
 
 .phila-legend-dot--btn.is-dimmed {
@@ -1584,7 +1602,7 @@
   align-items: flex-start;
   gap: 10px;
   padding: 11px 14px;
-  background: rgba(8, 12, 28, 0.93);
+  background: var(--mock-panel);
   border: 1px solid;
   border-radius: 8px;
   backdrop-filter: blur(12px);
@@ -1616,16 +1634,16 @@
 
 .phila-legend-billboard-body {
   font-size: 11px;
-  color: #cbd5e1;
+  color: var(--mock-muted);
   line-height: 1.55;
 }
 
 /* Reset filter button */
 .phila-legend-reset-btn {
-  background: rgba(255, 255, 255, 0.07);
+  background: var(--mock-tag);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 4px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   font-size: 10px;
   font-weight: 600;
   padding: 2px 7px;
@@ -1634,8 +1652,8 @@
 }
 
 .phila-legend-reset-btn:hover {
-  background: rgba(255, 61, 0, 0.15);
-  color: #ff6d47;
+  background: var(--danger-surface);
+  color: var(--status-danger);
   border-color: rgba(255, 61, 0, 0.3);
 }
 
@@ -1648,7 +1666,7 @@
 .phila-map-scrim {
   position: fixed;
   inset: 0;
-  background: rgba(8, 10, 24, 0.68);
+  background: var(--mock-panel);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   z-index: 5;
@@ -1681,7 +1699,7 @@
 .phila-story-feed::-webkit-scrollbar { width: 4px; }
 .phila-story-feed::-webkit-scrollbar-track { background: transparent; }
 .phila-story-feed::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.12);
+  background: var(--mock-tag);
   border-radius: 2px;
 }
 
@@ -1695,14 +1713,14 @@
 .phila-story-feed-title {
   font-size: 15px;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--mock-text);
   margin: 0 0 6px;
   letter-spacing: -0.01em;
 }
 
 .phila-story-feed-sub {
   font-size: 12px;
-  color: #64748b;
+  color: var(--mock-muted);
   margin: 0;
   line-height: 1.5;
 }
@@ -1760,7 +1778,7 @@
 .phila-story-neighborhood {
   font-size: 10px;
   font-weight: 600;
-  color: #64748b;
+  color: var(--mock-muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-bottom: 4px;
@@ -1769,7 +1787,7 @@
 .phila-story-headline {
   font-size: 13px;
   font-weight: 700;
-  color: #e2e8f0;
+  color: var(--mock-text);
   margin: 0 0 6px;
   line-height: 1.4;
   letter-spacing: -0.01em;
@@ -1777,7 +1795,7 @@
 
 .phila-story-body {
   font-size: 11.5px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   margin: 0;
   line-height: 1.55;
   display: -webkit-box;
@@ -1796,7 +1814,7 @@
 .phila-story-cta {
   font-size: 11px;
   font-weight: 600;
-  color: #00d1ff;
+  color: var(--mock-orange);
   letter-spacing: 0.02em;
   opacity: 0.7;
   transition: opacity 0.15s;
@@ -1818,10 +1836,10 @@
 
 .phila-feed-close-btn {
   flex-shrink: 0;
-  background: rgba(255,255,255,0.08);
+  background: var(--mock-tag);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 6px;
-  color: #94a3b8;
+  color: var(--mock-muted);
   font-size: 14px;
   line-height: 1;
   padding: 4px 8px;
@@ -1830,8 +1848,8 @@
 }
 
 .phila-feed-close-btn:hover {
-  background: rgba(255,255,255,0.15);
-  color: #e2e8f0;
+  background: var(--mock-tag);
+  color: var(--mock-text);
 }
 
 .phila-feed-reopen-btn {
@@ -1842,7 +1860,7 @@
   z-index: 120;
   background: rgba(0, 0, 0, 0.92);
   border: 1px solid rgba(15, 15, 15, 0);
-  color: #00d1ff;
+  color: var(--mock-orange);
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -1853,7 +1871,43 @@
 }
 
 .phila-feed-reopen-btn:hover {
-  background: rgba(0, 209, 255, 0.15);
+  background: var(--mock-tag);
   border-color: rgba(0, 209, 255, 0.7);
-  color: #fff;
+  color: var(--mock-text);
 }
+
+/* Improve secondary copy against the dark map panels. */
+.phila-app { color: var(--mock-text); }
+.phila-app :is(.phila-ai-disclosure, .phila-data-stamp, .phila-sample-tag, .phila-story-feed-sub, .phila-story-neighborhood, .phila-legend-ec-title, .phila-narration--loading, .phila-narration--fallback) { color: var(--mock-muted); }
+.phila-app .phila-data-stamp.is-synthetic { color: var(--status-warning); }
+.phila-app :is(.phila-panel, .phila-story-card, .phila-solution-tile) { min-width: 0; overflow-wrap: anywhere; }
+
+/* Keep secondary map labels readable on the dark floating panels. */
+.phila-app :is(.phila-layer-panel h3, .phila-toggle-hint, .phila-height-ticks, .phila-region-lbl, .phila-subhead, .phila-cbs-label, .phila-cbs-denom, .phila-cbs-gauge-ticks, .phila-stat-section-title, .phila-vitality-num) { color: var(--mock-muted); }
+.phila-stat-row { gap: 10px; align-items: flex-start; }
+.phila-stat-value { text-align: right; }
+.phila-app-header { justify-content: space-between; }
+.phila-app-back-button { position: static; flex-shrink: 0; }
+/* Opaque themed chrome stays legible over imagery and in body-mounted portals. */
+.phila-panel, .phila-compare-panel, .phila-app-header, .phila-legend-billboard,
+.phila-solution-footer, .phila-tour-overlay {background:var(--mock-panel);color:var(--mock-text);border-color:var(--line);}
+.phila-panel.is-expanded {background:var(--mock-panel) !important;}
+.phila-app :is(button,input), .phila-panel :is(button,input), .phila-compare-panel button {accent-color:var(--mock-orange);}
+.phila-app button, .phila-panel button, .phila-compare-panel button {border-color:var(--control-border);}
+.phila-app button:focus-visible, .phila-panel button:focus-visible, .phila-panel input:focus-visible {outline:3px solid var(--mock-orange);outline-offset:3px;}
+.phila-toggle-row.is-disabled, .phila-legend-dot--btn.is-dimmed {opacity:1;color:var(--mock-muted);}
+.phila-toggle-row.is-disabled {border:1px dashed var(--control-border);}
+.phila-legend-dot--btn.is-dimmed {background:transparent;}
+.phila-legend-dot--btn.is-dimmed .phila-legend-dot-circle {opacity:.4;}
+.phila-btn:hover {opacity:1;border-color:var(--mock-orange);}
+.phila-btn-danger {background:var(--danger-surface);color:var(--status-danger);}
+.phila-compare-divider, .phila-legend-sep {background:var(--line);}
+.phila-panel :is(hr,.phila-stat-row,.phila-summary,.phila-vitality-section), .phila-compare-panel .phila-stat-row {border-color:var(--line);}
+.phila-expand-backdrop, .phila-compare-overlay {background:var(--theme-overlay);}
+.phila-legend-billboard-title {color:var(--mock-text);}
+.phila-story-badge, .phila-insight-badge {color:var(--on-status);}
+.phila-story-cta {opacity:1;}
+
+.phila-panel, .phila-story-feed, .phila-right-rail {scrollbar-color:var(--control-border) var(--mock-tag);}
+.phila-panel::-webkit-scrollbar-thumb, .phila-story-feed::-webkit-scrollbar-thumb {background:var(--control-border);}
+.phila-app button:disabled, .phila-panel button:disabled, .phila-tour-overlay button:disabled {opacity:1;color:var(--mock-muted);background:var(--mock-tag);border-color:var(--control-border);cursor:not-allowed;}

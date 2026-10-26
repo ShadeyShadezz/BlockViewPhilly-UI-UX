@@ -170,6 +170,7 @@ export const useMapStore = create((set, get) => ({
   philaBuildingHeightScale: 1,
   philaSelectedTract: null,
   philaSelectedBuilding: null,
+  philaSelectedGeography: null,
   philaCompareTracts: [null, null],
   philaTractsWithCBS: [],
   philaBuildings: [],
@@ -229,6 +230,7 @@ export const useMapStore = create((set, get) => ({
       const tract = s.philaTractsWithCBS.find((t) => t.id === tractIdOrNull);
       return {
         philaSelectedTract: tract ?? null,
+        philaSelectedGeography: null,
         philaSelectedBuilding: null,
         // Pin as active insight — persists (as docked card) after clicking away
         activeInsight: tract ?? s.activeInsight,
@@ -238,7 +240,7 @@ export const useMapStore = create((set, get) => ({
   selectPhilaBuilding: (idxOrNull) =>
     set((s) => {
       if (idxOrNull === null || idxOrNull === undefined) return { philaSelectedBuilding: null };
-      return { philaSelectedBuilding: s.philaBuildings[idxOrNull] ?? null, philaSelectedTract: null };
+      return { philaSelectedBuilding: s.philaBuildings[idxOrNull] ?? null, philaSelectedTract: null, philaSelectedGeography: null };
     }),
 
   addPhilaToCompare: (tract) =>

@@ -13,7 +13,7 @@ function fmtPct(r) {
 }
 
 function cbsColor(cbs) {
-  return cbs >= 7 ? '#4caf50' : cbs >= 4 ? '#ffa726' : '#ef5350';
+  return cbs >= 7 ? 'var(--status-success)' : cbs >= 4 ? 'var(--status-warning)' : 'var(--status-danger)';
 }
 
 function TractCol({ tract }) {
@@ -21,15 +21,15 @@ function TractCol({ tract }) {
     <div className="phila-compare-col">
       <h4>{tract.neighborhood}</h4>
       <div style={{ marginBottom: 12 }}>
-        <div style={{ fontSize: 10, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>
+        <div style={{ fontSize: 10, color: 'var(--mock-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>
           Community Benefit Score
         </div>
         <div style={{ fontSize: 28, fontWeight: 900, color: cbsColor(tract.cbs), lineHeight: 1 }}>
           {tract.cbs}
-          <span style={{ fontSize: 13, fontWeight: 400, color: '#475569' }}> / 10</span>
+          <span style={{ fontSize: 13, fontWeight: 400, color: 'var(--mock-muted)' }}> / 10</span>
         </div>
         {tract.mismatchAlert && (
-          <div style={{ fontSize: 11, color: '#ffa726', marginTop: 4 }}>⚠ Mismatch alert</div>
+          <div style={{ fontSize: 11, color: 'var(--status-warning)', marginTop: 4 }}>⚠ Mismatch alert</div>
         )}
       </div>
 
@@ -82,7 +82,7 @@ export default function CompareMode() {
             ✕ Close
           </button>
         </div>
-        <div style={{ fontSize: 10, color: '#475569', marginBottom: 12 }}>
+        <div style={{ fontSize: 10, color: 'var(--mock-muted)', marginBottom: 12 }}>
           ⚑ All values are synthetic sample data
         </div>
         <div className="phila-compare-cols">

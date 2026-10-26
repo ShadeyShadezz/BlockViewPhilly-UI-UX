@@ -20,13 +20,13 @@ import { seedArticlesFromTracts } from '../data/feedArticles';
 import DataStamp from './DataStamp';
 
 const BADGE_STYLE = {
-  alert:    { background: '#FF8A00', color: '#000' },
-  positive: { background: '#2E7D32', color: '#fff' },
-  neutral:  { background: '#546E7A', color: '#fff' },
+  alert:    { background: 'var(--warning-fill)', color: 'var(--on-status)' },
+  positive: { background: 'var(--success-fill)', color: 'var(--on-status)' },
+  neutral:  { background: 'var(--neutral-fill)', color: 'var(--on-status)' },
 };
 
 const CBS_COLOR = (cbs) =>
-  cbs >= 7 ? '#4caf50' : cbs >= 4 ? '#ffa726' : '#ef5350';
+  cbs >= 7 ? 'var(--status-success)' : cbs >= 4 ? 'var(--status-warning)' : 'var(--status-danger)';
 
 // ── Article card ─────────────────────────────────────────────────────────────
 
